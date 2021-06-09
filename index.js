@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-
+//CATERGORIAS
+const categoriesController = require("./categories/CategoriesController");
+//ARTIGOS
+const articlesController = require("./articles/ArticlesController");
 
 //VIEW ENGINE
 app.set('view engine','ejs');
@@ -22,6 +25,11 @@ connection
     }).catch((error)=>{
         console.log(error);
     });
+
+app.use("/", categoriesController);
+
+
+app.use("/", articlesController);
 
 
 app.get("/",(req,res)=>{
