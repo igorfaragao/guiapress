@@ -2,10 +2,10 @@ body{
     background-color: rgb(110, 110, 110);
 
 }
-card-header{
+#cardh{
     background-color: darkgray
 
 }
-card-body{
+#cardb{
     background-color: darkgray;
 }
