@@ -11,21 +11,27 @@ const slugify = require("Slugify");
 
 
 router.get("/admin/articles",(req,res)=>{
-    res.render("admin/articles/index")
+
+    Article.findAll({
+        include: [{model: Category}]
+    }).then(articles =>{
+        res.render("admin/articles/index",{articles: articles})
+    })
+
+
 });
-router.get("/admin/articles/new",(req,res)=>{
-    Category.findAll().then(categories =>{
+
+
+
+router.get("/admin/articles/new",(req,res)=> {
+    Category.findAll().then(categories => {
         res.render("admin/articles/new",{categories: categories})
     })
-   
-
-
-
 });
 router.post("/articles/save", (req,res)=>{
     var title = req.body.title;
     var body = req.body.body;
-    var category = req.aborted.category;
+    var category = req.body.category;
 
 
     Article.create({

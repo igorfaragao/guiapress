@@ -25,6 +25,6 @@ Article.belongsTo(Category);// UM ARTIGO pertence a UMA CATEGORIA 1-P-1
 
 
 
-
+//Article.sync({force: true});
 
 module.exports = Article;
