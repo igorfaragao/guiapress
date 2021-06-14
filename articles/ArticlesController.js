@@ -48,6 +48,25 @@ router.post("/articles/save", (req,res)=>{
 
 
 });
+//DELETANDO ARTIGOS
+router.post("/articles/delete", (req,res) =>{
+    var id = req.body.id;
+    if (id != undefined){
+        if (!isNaN(id)){
+            Article.destroy({
+                where:{
+                    id: id
+                }
+            }).then(()=>{
+                res.redirect("/admin/articles")
+            })
+        }else{ //NÂO FOR UM NUMERO
+            res.redirect("/admin/articles");
+        }
+    }else{ //NULO
+        res.redirect("admin/articles")
+    }
+});
 
 
 
