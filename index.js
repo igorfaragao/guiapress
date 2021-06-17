@@ -4,11 +4,14 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 //CATERGORIAS
 const categoriesController = require("./categories/CategoriesController");
+const Category = require("./categories/Category")
 //ARTIGOS
 const articlesController = require("./articles/ArticlesController");
-//importação dos models
 const Article = require("./articles/Article");
-const Category = require("./categories/Category")
+//Usuarios
+const userController = require("./user/UserController");
+const User = require("./user/User")
+
 
 
 
@@ -22,6 +25,10 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
+
+
+
 //DATABASE
 connection
     .authenticate()
@@ -32,10 +39,8 @@ connection
     });
 
 app.use("/", categoriesController);
-
-
 app.use("/", articlesController);
-
+app.use("/", userController);
 
 
 
