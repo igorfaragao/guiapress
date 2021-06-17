@@ -16,8 +16,20 @@
                     <input class="form-control" type="text" name="title" placeholder="Defina o titulo da categoria" value="<%= article.title %>">
                     <input type="hidden" name="id" value="<%= article.id %>">
                     <textarea class="form-control" name="body"  id="article" cols="50" rows="15"><%- article.body %></textarea>
+                    <label for="">Categoria</label>
+                    <select name="category" class="form-control" id="">
+                        <% categories.forEach((category)=>{%>
+                           <% if(category.id == article.categoryId){%>
+                                <option value="<%= category.id %>" selected> <%= category.title %> </option>
+                                
+                                <% } else { %> 
+                                    <option value="<%= category.id %>"> <%= category.title %> </option>
+                                    <%} %>
+
+                          
+                        <%})%>    
+                    </select>
                     <br>
-                   
                     <button class="btn btn-success">Atualizar</button>
 
 
