@@ -25,6 +25,7 @@ router.post("/categories/save",(req,res)=>{
             res.redirect("/admin/categories/new");
         }
 });
+//LISTANDO CATEGORIA
 router.get("/admin/categories", (req,res)=>{
 
     Category.findAll().then(categories =>{
